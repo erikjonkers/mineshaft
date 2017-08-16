@@ -1,0 +1,29 @@
+
+NVIDIASMI=$(which nvidia-smi)
+NVIDIASETTINGS=$(which nvidia-settings)
+
+FANSPEED=75
+MEMSPEED=1400
+MAXWATT=115
+
+XLOCK="/tmp/.X1-lock"
+
+if [ -f $XLOCK ]; then 
+	kill $(cat $XLOCK)
+	rm $XLOCK
+	sleep 5
+fi
+
+#start X
+X :1 -config xorgMine.conf &
+export DISPLAY=:1
+
+gpuList=`$NVIDIASMI | grep GeForce | awk '{print $2}'`
+
+for gpu in $gpuList; do
+	echo "setting max power for gpu $gpu"
+	$NVIDIASMI -i $gpu -pl $MAXWATT
+	$NVIDIASETTINGS -a "[gpu:$gpu]/GPUFanControlState=1" -a "[fan:$gpu]/GPUTargetFanSpeed=$FANSPEED"
+	$NVIDIASETTINGS -a "[gpu:$gpu]/GPUMemoryTransferRateOffset[3]=$MEMSPEED"
+done
+

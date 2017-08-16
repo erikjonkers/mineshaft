@@ -1,0 +1,20 @@
+#!/bin/bash
+NVIDIASMI=$(which nvidia-smi)
+
+TW=0
+for w in $($NVIDIASMI | grep Default | awk '{print $5}'); do   
+	mywatt=$(echo $w |sed s/W$//g);  
+	TW=$(($TW + $mywatt)); 
+done;
+
+#called with 'force' argument?
+if [ "$1" == "force" ]; then
+	TW=1
+fi
+
+echo $TW
+if test $TW -lt 150; then 
+	echo "restart"; 
+	./ethminerStart 
+fi
+

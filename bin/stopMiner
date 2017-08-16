@@ -1,0 +1,24 @@
+
+NVIDIASMI=$(which nvidia-smi)
+NVIDIASETTINGS=$(which nvidia-settings)
+
+XLOCK="/tmp/.X1-lock"
+
+FANSPEED=5
+MEMSPEED=1000
+
+export DISPLAY=:1
+
+gpuList=`$NVIDIASMI | grep GeForce | awk '{print $2}'`
+
+for gpu in $gpuList; do
+	echo "setting max power for gpu $gpu"
+	$NVIDIASETTINGS -a "[gpu:$gpu]/GPUFanControlState=1" -a "[fan:$gpu]/GPUTargetFanSpeed=$FANSPEED"
+	$NVIDIASETTINGS -a "[gpu:$gpu]/GPUMemoryTransferRateOffset[3]=$MEMSPEED"
+done
+
+if [ -f $XLOCK ]; then 
+	kill $(cat $XLOCK)
+	rm $XLOCK
+fi
+

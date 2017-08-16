@@ -1,0 +1,23 @@
+
+apt-get install    cmake git   build-essential pkg-config libc6-dev m4 g++-multilib       autoconf libtool ncurses-dev unzip git python       zlib1g-dev wget bsdmainutils automake opencl-headers       mesa-common-dev
+
+# hoeft niet denk ik;
+add-apt-repository ppa:graphics-drivers/ppa
+
+apt update
+apt upgrade
+
+install cuda die installed de nvidia drivers
+
+dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb
+dpkg -i cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64-deb
+apt-get install cuda  
+apt update
+apt-get install cuda    
+
+- blacklist nouveau driver
+cp blacklist-nouveau.conf /etc/modprobe.d/blacklist-nouveau.conf
+
+cp minerSoftware/xorgMine.conf /etc/X11/
+
+doe het ethminer filetje

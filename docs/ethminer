@@ -1,0 +1,8 @@
+
+git clone https://github.com/ethereum-mining/ethminer.git
+
+mkdir build; cd build
+cmake .. -DETHASHCUDA=ON
+cmake --build .
+make install
+
