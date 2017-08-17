@@ -3,11 +3,13 @@ NVIDIASMI=$(which nvidia-smi)
 
 TW=0
 TotalFanspeed=0
-GPUstatus=$($NVIDIASMI)
 
-for fanspeed in $(echo $GPUstatus | grep Default | awk '{print $2}'); do   
-	myFanspeed=$(echo $fanspeed |sed s/\%$//g);  
+for gpuline in $($NVIDIASMI | grep Default | awk '{print $2 $5}'); do   
+	myFanspeed=$(echo $gpuline |sed s/\%.*$//g);  
 	TotalFanspeed=$(($TotalFanspeed + $myFanspeed)); 
+
+	myWatt=$(echo $gpuline | sed s/.*\%//g | sed s/W$//g)
+	TotalWatts=$(($TotalWatts + $myWatt)); 
 done;
 
 if test $TotalFanspeed -lt 100; then 
