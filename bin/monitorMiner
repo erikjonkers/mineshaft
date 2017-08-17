@@ -2,7 +2,20 @@
 NVIDIASMI=$(which nvidia-smi)
 
 TW=0
-for w in $($NVIDIASMI | grep Default | awk '{print $5}'); do   
+TotalFanspeed=0
+GPUstatus=$($NVIDIASMI)
+
+for fanspeed in $(echo $GPUstatus | grep Default | awk '{print $2}'); do   
+	myFanspeed=$(echo $fanspeed |sed s/\%$//g);  
+	TotalFanspeed=$(($TotalFanspeed + $myFanspeed)); 
+done;
+
+if test $TotalFanspeed -lt 100; then 
+	echo "doing setup"
+	/root/mineshaft/bin/setup1070
+fi
+
+for w in $(echo $GPUstatus | grep Default | awk '{print $5}'); do   
 	mywatt=$(echo $w |sed s/W$//g);  
 	TW=$(($TW + $mywatt)); 
 done;
@@ -12,9 +25,10 @@ if [ "$1" == "force" ]; then
 	TW=1
 fi
 
-echo $TW
+echo "Fans: $TotalFanspeed"
+echo "power: $TW"
 if test $TW -lt 150; then 
 	echo "restart"; 
-	./ethminerStart 
+	/root/mineshaft/bin/ethminerStart
 fi
 

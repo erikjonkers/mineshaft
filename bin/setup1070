@@ -3,7 +3,7 @@ NVIDIASMI=$(which nvidia-smi)
 NVIDIASETTINGS=$(which nvidia-settings)
 
 FANSPEED=75
-MEMSPEED=1400
+MEMSPEED=1000
 MAXWATT=115
 
 XLOCK="/tmp/.X1-lock"

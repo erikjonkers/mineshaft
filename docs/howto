@@ -16,8 +16,8 @@ apt update
 apt-get install cuda    
 
 - blacklist nouveau driver
-cp blacklist-nouveau.conf /etc/modprobe.d/blacklist-nouveau.conf
+cp files/blacklist-nouveau.conf /etc/modprobe.d/blacklist-nouveau.conf
 
-cp minerSoftware/xorgMine.conf /etc/X11/
+cp files/xorgMine.conf /etc/X11/
 
 doe het ethminer filetje
