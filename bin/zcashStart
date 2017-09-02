@@ -2,7 +2,7 @@
 
 SCREEN=$(which screen)
 
-ETHMINER=/root/mineshaft/bin/zcash/miner
+ETHMINER=/root/mineshaft/zcash/miner
 WORKER=$(hostname)
 ETHADDRESS="t1WUFc4djiQDDWDf2aYLwfXabAUodehsVLc"
 
