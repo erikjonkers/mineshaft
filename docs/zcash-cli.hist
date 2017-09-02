@@ -1,0 +1,43 @@
+ 1304  zcash-cli getnewaddress
+ 1307  zcash-cli listaddresses
+ 1308  zcash-cli z_listaddresses
+ 1309  zcash-cli t_listaddresses
+ 1310  zcash-cli getaddressesbyaccount ""
+ 1334  zcash-cli 
+ 1335  zcash-cli z_getnewddress
+ 1339  zcash-cli z_getnewddress
+ 1345  zcash-cli z_getnewddress
+ 1349  zcash-cli z_getnewddress
+ 1350  zcash-cli z_getnewaddress
+ 1364  zcash-cli getnewaddress
+ 1449  zcash-cli z_sendmany "$TADDR" "[{\"address\": \"$DEPO\", \"amount\": 0.01498322}]"
+ 1450  zcash-cli getbalance
+ 1451  zcash-cli listaccounts
+ 1452  zcash-cli zlistaccounts
+ 1453  zcash-cli z_listaccounts
+ 1454  zcash-cli listtransactions
+ 1455  zcash-cli sendfrom $TADDR $DEPO 0.01498322 
+ 1456  zcash-cli z_sendmany "$TADDR" "[{\"address\": \"$DEPO\", \"amount\": 0.01498322}]"
+ 1460  zcash-cli z_sendmany "$TADDR" "[{\"address\": \"$DEPO\", \"amount\": 0.01498322}]"
+ 1462  zcash-cli getbalance
+ 1463  zcash-cli z_sendmany "$DEPO" "[{\"address\": \"$TADDR\", \"amount\": 0.01498322}]"
+ 1464  zcash-cli getbalance
+ 1465  zcash-cli z_getoperationresult opid-fa06f77a-fbde-4621-bb8d-c63893cd2fef
+ 1466  zcash-cli z_getoperationresult [opid-fa06f77a-fbde-4621-bb8d-c63893cd2fef]
+ 1467  zcash-cli z_getoperationresult [fa06f77a-fbde-4621-bb8d-c63893cd2fef]
+ 1468  zcash-cli z_getoperationresult {[fa06f77a-fbde-4621-bb8d-c63893cd2fef]}
+ 1469  zcash-cli z_getoperationresult {[opid-fa06f77a-fbde-4621-bb8d-c63893cd2fef]}
+ 1470  zcash-cli z_getoperationresult "{[opid-fa06f77a-fbde-4621-bb8d-c63893cd2fef]}"
+ 1471  zcash-cli z_getoperationresult "{opid-fa06f77a-fbde-4621-bb8d-c63893cd2fef}"
+ 1472  zcash-cli z_getoperationresult ["opid-fa06f77a-fbde-4621-bb8d-c63893cd2fef"]
+ 1473  zcash-cli z_getoperationresult "[\"opid-fa06f77a-fbde-4621-bb8d-c63893cd2fef\"]"
+ 1474  zcash-cli z_sendmany "$DEPO" "[{\"address\": \"$TADDR\", \"amount\": 0.01498322, \"fee\": 0}]"
+ 1475  zcash-cli z_sendmany "$DEPO" "[{\"address\": \"$TADDR\", \"amount\": 0.01488322}]"
+ 1476  zcash-cli z_getoperationresult "[\"opid-1278a4d4-cc5f-42a4-9d6b-e4434fdd4964\"]"
+ 1477  zcash-cli z_sendmany "$TADDR" "[{\"address\": \"$DEPO\", \"amount\": 0.01488322}]"
+ 1478  zcash-cli z_getoperationresult "[\"opid-48438fe5-7827-48a7-87b1-dca0be9af03d\"]"
+ 1479  zcash-cli getbalance
+ 1480  zcash-cli getinfo t1dHB8mi8ipxUeJ6GH87dgKw1h2sJanNUJs
+ 1481  zcash-cli getbalance t1dHB8mi8ipxUeJ6GH87dgKw1h2sJanNUJs
+ 1483  history | grep zcash-cli
+ 1484  history | grep zcash-cli > mineshaft/docs/zcash-cli.hist
