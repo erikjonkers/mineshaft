@@ -4,7 +4,10 @@ SCREEN=$(which screen)
 
 ETHMINER=/root/mineshaft/zcash/miner
 WORKER=$(hostname)
-ETHADDRESS="t1WUFc4djiQDDWDf2aYLwfXabAUodehsVLc"
+#ETHADDRESS="t1WUFc4djiQDDWDf2aYLwfXabAUodehsVLc"
+# direct naar bittrex
+ETHADDRESS="t1dHB8mi8ipxUeJ6GH87dgKw1h2sJanNUJs"
+
 
 #ETHARGS=" --farm-recheck 200 --cl-global-work 16384 --cl-global-work 8192 --cl-local-work 256 -U -F http://eth-eu.dwarfpool.com:80/$ETHADDRESS/$WORKER"
 ETHARGS=" --server eu1-zcash.flypool.org --user $ETHADDRESS.$WORKER --pass 2000 --port 3333 --cuda_devices 0 1 2 3 4"
