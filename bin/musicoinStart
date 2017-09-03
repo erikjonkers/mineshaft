@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SCREEN=$(which screen)
+
+ETHMINER=/usr/local/bin/ethminer
+WORKER=$(echo $(hostname) | sed s/gatogordo/gg/ )
+#WORKER=$(hostname)
+ETHADDRESS="0xe36c9c1f6fa4a5abc57e5c0fad300d626b345cac"
+
+#ETHARGS=" --farm-recheck 200 --cl-global-work 16384 --cl-global-work 8192 --cl-local-work 256 -U -F http://eth-eu.dwarfpool.com:80/$ETHADDRESS/$WORKER"
+ETHARGS=" --farm-recheck 200 --cuda-parallel-hash 8 -U -SP 1 -S musicoin.nomnom.technology:9999 -O $ETHADDRESS.$WORKER"
+
+#ethminerProcess=$(ps a | grep ethminer | head -1 |grep -v grep | awk '{print $1}')
+#if [ "$ethminerProcess" != "" ]; then
+#	kill $ethminerProcess
+#fi
+killall ethminer
+$SCREEN -d -m $ETHMINER $ETHARGS
+
