@@ -9,9 +9,10 @@ ETHADDRESS="0x22c1448152a52354ae272f967e84415ea595d34e"
 #ETHARGS=" --farm-recheck 200 --cl-global-work 16384 --cl-global-work 8192 --cl-local-work 256 -U -F http://eth-eu.dwarfpool.com:80/$ETHADDRESS/$WORKER"
 ETHARGS=" --farm-recheck 200 --cuda-parallel-hash 8 -U -S eu1.ethermine.org:4444 -FS us1.ethermine.org:4444 -O $ETHADDRESS.$WORKER"
 
-ethminerProcess=$(ps a | grep ethminer | head -1 |grep -v grep | awk '{print $1}')
-if [ "$ethminerProcess" != "" ]; then
-	kill $ethminerProcess
-fi
+#ethminerProcess=$(ps a | grep ethminer | head -1 |grep -v grep | awk '{print $1}')
+#if [ "$ethminerProcess" != "" ]; then
+#	kill $ethminerProcess
+#fi
+killall ethminer
 $SCREEN -d -m $ETHMINER $ETHARGS
 
