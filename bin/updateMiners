@@ -1,0 +1,7 @@
+
+for ip in 173 119 12 13; do
+	ssh 192.168.2.$ip  "cd mineshaft;git pull;killall ethminer;bin/monitorMiner"
+done
+
+
+
