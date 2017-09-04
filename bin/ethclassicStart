@@ -7,7 +7,7 @@ WORKER=$(hostname)
 ETHADDRESS="0x8e61aa3f04888179803604bcc3cb5e18e582d251"
 
 #ETHARGS=" --farm-recheck 200 --cl-global-work 16384 --cl-global-work 8192 --cl-local-work 256 -U -F http://eth-eu.dwarfpool.com:80/$ETHADDRESS/$WORKER"
-ETHARGS=" --farm-recheck 200 --cuda-parallel-hash 4 -U -S eu1-etc.ethermine.org:4444 -FS us1.ethermine.org:4444 -O $ETHADDRESS.$WORKER"
+ETHARGS=" --farm-recheck 200 --cuda-parallel-hash 4 -U -S eu1-etc.ethermine.org:4444 -FS eu1-etc.ethermine.org:14444 -O $ETHADDRESS.$WORKER"
 
 #ethminerProcess=$(ps a | grep ethminer | head -1 |grep -v grep | awk '{print $1}')
 #if [ "$ethminerProcess" != "" ]; then
