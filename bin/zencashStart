@@ -3,7 +3,9 @@
 SCREEN=$(which screen)
 
 ETHMINER=/root/mineshaft/zcash/miner
-WORKER=$(hostname)
+#WORKER=$(hostname)
+WORKER=$(echo $(hostname) | sed s/gatogordo/gg/ )
+
 #ETHADDRESS="t1WUFc4djiQDDWDf2aYLwfXabAUodehsVLc"
 # direct naar bittrex
 ETHADDRESS="znbk7khEr3vaQNbzC9z84w2QmJohTwio2oM"
