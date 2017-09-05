@@ -26,8 +26,9 @@ echo "Fans: $TotalFanspeed"
 echo "power: $TotalWatts"
 if test $TotalWatts -lt 150; then 
 	echo "restart"; 
+	/root/mineshaft/bin/zencashStart
 #	/root/mineshaft/bin/ethclassicStart
-	/root/mineshaft/bin/ethminerStart
+#	/root/mineshaft/bin/ethminerStart
 #	/root/mineshaft/bin/musicoinStart
 fi
 
