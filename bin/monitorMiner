@@ -19,6 +19,8 @@ fi
 
 #called with 'force' argument?
 if [ "$1" == "force" ]; then
+	killall ethminer
+	killall miner
 	TotalWatts=1
 fi
 
@@ -26,10 +28,10 @@ echo "Fans: $TotalFanspeed"
 echo "power: $TotalWatts"
 if test $TotalWatts -lt 150; then 
 	echo "restart"; 
-#	/root/mineshaft/bin/zcashStart
+	/root/mineshaft/bin/zcashStart
 #	/root/mineshaft/bin/zencashStart
 #	/root/mineshaft/bin/ethclassicStart
-	/root/mineshaft/bin/ethminerStart
+#	/root/mineshaft/bin/ethminerStart
 #	/root/mineshaft/bin/musicoinStart
 fi
 
