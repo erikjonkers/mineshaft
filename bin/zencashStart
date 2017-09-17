@@ -12,7 +12,8 @@ ETHADDRESS="znbk7khEr3vaQNbzC9z84w2QmJohTwio2oM"
 
 
 #ETHARGS=" --farm-recheck 200 --cl-global-work 16384 --cl-global-work 8192 --cl-local-work 256 -U -F http://eth-eu.dwarfpool.com:80/$ETHADDRESS/$WORKER"
-ETHARGS=" --server luckpool.org --user $ETHADDRESS.$WORKER --pass x --port 3057 --cuda_devices 0 1 2 3 4"
+#ETHARGS=" --server luckpool.org --user $ETHADDRESS.$WORKER --pass x --port 3057 --cuda_devices 0 1 2 3 4"
+ETHARGS=" --server eu.zenmine.pro --user $ETHADDRESS.$WORKER --pass x --port 9009 --cuda_devices 0 1 2 3 4"
 
 #ethminerProcess=$(ps a | grep ethminer | head -1 |grep -v grep | awk '{print $1}')
 #if [ "$ethminerProcess" != "" ]; then
