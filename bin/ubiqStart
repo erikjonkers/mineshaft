@@ -4,6 +4,7 @@ SCREEN=$(which screen)
 
 ETHMINER=/usr/local/bin/ethminer
 WORKER=$(echo $(hostname) | sed s/gatogordo/gg/ )
+
 ETHADDRESS="0xd81ca75d0614335ba14698d4bd0f58d9cba0e5d1"
 
 #ETHARGS=" --farm-recheck 200 --cl-global-work 16384 --cl-global-work 8192 --cl-local-work 256 -U -F http://eth-eu.dwarfpool.com:80/$ETHADDRESS/$WORKER"
