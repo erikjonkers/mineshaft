@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SCREEN=$(which screen)
+
+ETHMINER=/root/mineshaft/bin/ccminer
+WORKER=$(hostname)
+ETHADDRESS="FWNsJrKShjhpDd3sGXf8yzKNrmoLcrYL93"
+
+#ETHARGS=" --farm-recheck 200 --cl-global-work 16384 --cl-global-work 8192 --cl-local-work 256 -U -F http://eth-eu.dwarfpool.com:80/$ETHADDRESS/$WORKER"
+ETHARGS=" -q -a groestl -o stratum+tcp://erebor.dwarfpool.com:3345 -u $ETHADDRESS.$WORKER -p 1"
+
+#ethminerProcess=$(ps a | grep ethminer | head -1 |grep -v grep | awk '{print $1}')
+#if [ "$ethminerProcess" != "" ]; then
+#	kill $ethminerProcess
+#fi
+killall ethminer
+killall ccminer
+$SCREEN -d -m $ETHMINER $ETHARGS
+
