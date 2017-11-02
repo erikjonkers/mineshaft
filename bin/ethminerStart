@@ -14,5 +14,6 @@ ETHARGS=" --farm-recheck 200 --cuda-parallel-hash 8 -U -S eu1.ethermine.org:4444
 #	kill $ethminerProcess
 #fi
 killall ethminer
+killall ccminer
 $SCREEN -d -m $ETHMINER $ETHARGS
 
