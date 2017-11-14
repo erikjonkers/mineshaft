@@ -31,10 +31,10 @@ if test $TotalWatts -lt 150; then
 #	/root/mineshaft/bin/zcashStart
 #	/root/mineshaft/bin/zencashStart
 #	/root/mineshaft/bin/ethclassicStart
-#	/root/mineshaft/bin/ethminerStart
+	/root/mineshaft/bin/ethminerStart
 #	/root/mineshaft/bin/groestlStart
 #	/root/mineshaft/bin/ubiqStart
-	/root/mineshaft/bin/expanseStart
+#	/root/mineshaft/bin/expanseStart
 #	/root/mineshaft/bin/musicoinStart
 #	/root/mineshaft/bin/ellaStart
 #	/root/mineshaft/bin/ellaSoloStart
