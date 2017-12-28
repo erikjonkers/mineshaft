@@ -8,7 +8,8 @@ WORKER=$(echo $(hostname) | sed s/gatogordo/gg/ )
 ETHADDRESS="0x29cb18b3b496618cb6d533ce7cc93274b750616a"
 
 #ETHARGS=" --farm-recheck 200 --cl-global-work 16384 --cl-global-work 8192 --cl-local-work 256 -U -F http://eth-eu.dwarfpool.com:80/$ETHADDRESS/$WORKER"
-ETHARGS=" --farm-recheck 200 --cuda-parallel-hash 8 -U -F 52.165.128.189:8888/$ETHADDRESS/$WORKER"
+#ETHARGS=" --farm-recheck 200 --cuda-parallel-hash 8 -U -F 52.165.128.189:8888/$ETHADDRESS/$WORKER"
+ETHARGS=" --farm-recheck 200 --cuda-parallel-hash 8 -U -S exp.minerpool.net:7004 -SP 1 -O $ETHADDRESS.$WORKER"
 
 #ethminerProcess=$(ps a | grep ethminer | head -1 |grep -v grep | awk '{print $1}')
 #if [ "$ethminerProcess" != "" ]; then
