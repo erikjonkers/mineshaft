@@ -34,7 +34,8 @@ if test $TotalWatts -lt 150; then
 #	/root/mineshaft/bin/ethminerStart
 #	/root/mineshaft/bin/groestlStart
 #	/root/mineshaft/bin/ubiqStart
-	/root/mineshaft/bin/expanseStart
+#	/root/mineshaft/bin/expanseStart
+	/root/mineshaft/bin/expanseSoloStart
 #	/root/mineshaft/bin/musicoinStart
 #	/root/mineshaft/bin/ellaStart
 #	/root/mineshaft/bin/ellaSoloStart
