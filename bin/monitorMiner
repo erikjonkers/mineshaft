@@ -26,7 +26,7 @@ fi
 
 echo "Fans: $TotalFanspeed"
 echo "power: $TotalWatts"
-if test $TotalWatts -lt 150; then 
+if test $TotalWatts -lt 250; then 
 	echo "restart"; 
 #	/root/mineshaft/bin/zcashStart
 #	/root/mineshaft/bin/zencashStart
