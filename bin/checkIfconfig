@@ -6,6 +6,7 @@ interface=`ifconfig | head -1 | awk '{print $1}'`
 currentInterface=`grep '^auto ' $networkConfig | grep -v lo | awk '{print $2}'`
 
 if [ "$currentInterface" != "$interface" ]; then
-	# reconfigure oniterface
+	# reconfigure interface
 	sed -i'' s/$currentInterface/$interface/ $networkConfig
+	reboot
 fi
