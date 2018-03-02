@@ -1,0 +1,105 @@
+#!/usr/bin/python
+
+import subprocess
+
+def getGPUinfo():
+	gpuDict = {}
+	smi=subprocess.check_output(['/usr/bin/nvidia-smi'])
+	smiLines = smi.split('\n')
+	for line in smiLines:
+		splitLine = line.split()
+		if len(splitLine) > 1:
+			if splitLine[2] == 'GeForce':
+				gpu = splitLine[1]
+				pci = splitLine[7]
+				pciId = int(pci.split(':')[1], 16)
+				gpuDict[gpu]=pciId
+	return gpuDict
+
+def serverSection(gpu):
+	return "\tScreen %s \"Screen%s\" 0 0\n" % (gpu, gpu)
+
+def deviceSection(gpu, pciId):
+	return '''
+Section "Device"
+	Identifier "Device%s"
+	Driver "nvidia"
+   	BusID "PCI:%s@0:0:0"
+	Option "ConstrainCursor" "off"
+	Option         "Coolbits" "31"
+	Option         "ConnectedMonitor" "DFP-0"
+	Option         "CustomEDID" "DFP-0:/etc/X11/edid.bin"
+EndSection
+	''' % (gpu, pciId)
+
+def screenSection(gpu):
+	return '''
+Section "Screen"
+    Identifier "Screen%s"
+    Device "Device%s"
+    Option "AllowEmptyInitialConfiguration" "on"
+    Option "IgnoreDisplayDevices" "CRT"
+    Option         "Coolbits" "31"
+    Option         "UseDisplayDevice" "none"
+EndSection
+	''' % (gpu, gpu)
+
+
+gpuDict = getGPUinfo()
+sortedGpus = sorted(gpuDict)
+
+
+lines='''
+Section "ServerLayout"
+    Identifier "layout"
+'''
+
+for gpu in sortedGpus:
+	line=serverSection(gpu)
+	lines= lines + line
+
+lines=lines+"EndSection"
+
+for gpu in sortedGpus:
+	line=deviceSection(gpu, gpuDict[gpu])
+	lines= lines + line
+
+for gpu in sortedGpus:
+	line=screenSection(gpu)
+	lines= lines + line
+
+print lines
+
+#
+#Section "ServerLayout"
+#    Identifier "layout"
+#    Screen 0 "Screen0" 0 0
+#    Screen 1 "Screen1" 0 0 
+#    Screen 2 "Screen2" 0 0 
+#    Screen 3 "Screen3" 0 0 
+#    Screen 4 "Screen4" 0 0 
+#    Screen 5 "Screen5" 0 0 
+#    Screen 6 "Screen6" 0 0 
+#    Screen 7 "Screen7" 0 0 
+#    Screen 8 "Screen8" 0 0 
+#EndSection
+#
+#Section "Device"
+#    Identifier "Device0"
+#    Driver "nvidia"
+#    BusID "PCI:1@0:0:0"
+#    Option "ConstrainCursor" "off"
+#    Option         "Coolbits" "31"
+#    Option         "ConnectedMonitor" "DFP-0"
+#    Option         "CustomEDID" "DFP-0:/etc/X11/edid.bin"
+#EndSection
+#
+#Section "Screen"
+#    Identifier "Screen8"
+#    Device "Device8"
+#    Option "AllowEmptyInitialConfiguration" "on"
+#    Option "IgnoreDisplayDevices" "CRT"
+#    Option         "Coolbits" "31"
+#    Option         "UseDisplayDevice" "none"
+#EndSection
+##
